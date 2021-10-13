@@ -70,6 +70,8 @@ public class PhotoEditorClass {
             g2d.fillRect(pixelCoordinates[0], pixelCoordinates[1], width, 35);
             g2d.dispose();
 
+            ImageIO.write(refactoredImage, "png", fileSystemClass.file);
+
             System.out.println("Found pixel at (" + pixelCoordinates[0] + "," + pixelCoordinates[1] + ")."); //display coordinates
 
             return image;
@@ -112,6 +114,22 @@ public class PhotoEditorClass {
 
     public void getColor(int x, int y) throws IOException {
         File file = new File(fileSystemClass.filePath);
+        BufferedImage image = ImageIO.read(file);
+
+        Color p = new Color(image.getRGB(x, y));
+        int c = p.getRGB();
+
+        System.out.println(c);
+
+        int r = p.getRed();
+        int g = p.getGreen();
+        int b = p.getBlue();
+
+        System.out.println("R " + r + " G " + g + " B " + b);
+
+    }
+    public void getColor(int x, int y, String path) throws IOException {
+        File file = new File(path);
         BufferedImage image = ImageIO.read(file);
 
         Color p = new Color(image.getRGB(x, y));

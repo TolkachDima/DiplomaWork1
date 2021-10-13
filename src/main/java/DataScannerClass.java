@@ -1,9 +1,7 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -51,7 +49,7 @@ public class DataScannerClass {
         WebElement element = driver.findElement(By.className("price-axis"));
         Screenshot screenshot= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver,element);
         ImageIO.write(screenshot.getImage(), "png", new File("C:\\Users\\USER\\Desktop\\photoshop\\ElementScreenshot.png"));
-
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 
         driver.close();
