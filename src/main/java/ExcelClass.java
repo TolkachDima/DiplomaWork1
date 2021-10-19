@@ -12,14 +12,14 @@ public class ExcelClass {
 
         File excelFile = new File("C:\\Users\\USER\\Desktop\\photoshop\\excel file\\data.xlsx");
 
-        FileInputStream fis = new FileInputStream(excelFile);
+        FileInputStream fis;
 
-        XSSFWorkbook workbook = new XSSFWorkbook(fis);
-        FileOutputStream fos = new FileOutputStream(excelFile);
-        XSSFSheet sheet = workbook.getSheetAt(0);
+        XSSFWorkbook workbook;
+        FileOutputStream fos;
+        XSSFSheet sheet;
 
 
-        Row row = sheet.createRow(sheet.getLastRowNum()+1);
+        Row row;
 
 
     public ExcelClass() throws IOException {
@@ -28,6 +28,12 @@ public class ExcelClass {
 
 
     public void excelWriter(ArrayList<Double> arr) throws IOException {
+        fos = new FileOutputStream(excelFile);
+        fis = new FileInputStream(excelFile);
+        sheet = workbook.getSheetAt(0);
+        workbook = new XSSFWorkbook(fis);
+        row = sheet.createRow(sheet.getLastRowNum()+1);
+
         int i = 0;
         for (Double d:arr) {
             cell = row.createCell(i);
